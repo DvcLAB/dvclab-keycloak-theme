@@ -24,9 +24,7 @@ SOFTWARE.
 
 'use strict';
 
-// import dat from './dat.gui.min.js';
 // Simulation section
-
 document.addEventListener("DOMContentLoaded", function(event) {
     const allPage = document.getElementsByTagName('body')[0];
     const loginPage = document.getElementsByClassName('login-pf-page')[0];
@@ -133,8 +131,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             formatR = getSupportedFormat(gl, gl.RGBA, gl.RGBA, halfFloatTexType);
         }
     
-        // ga('send', 'event', isWebGL2 ? 'webgl2' : 'webgl', formatRGBA == null ? 'not supported' : 'supported');
-    
         return {
             gl,
             ext: {
@@ -218,7 +214,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
         let github = gui.add({ fun : () => {
             window.open('https://github.com/PavelDoGreat/WebGL-Fluid-Simulation');
-            // ga('send', 'event', 'link button', 'github');
         } }, 'fun').name('Github');
         github.__li.className = 'cr function bigFont';
         github.__li.style.borderLeft = '3px solid #8C8C8C';
@@ -227,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         githubIcon.className = 'icon github';
     
         let twitter = gui.add({ fun : () => {
-            // ga('send', 'event', 'link button', 'twitter');
             window.open('https://twitter.com/PavelDoGreat');
         } }, 'fun').name('Twitter');
         twitter.__li.className = 'cr function bigFont';
@@ -237,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         twitterIcon.className = 'icon twitter';
     
         let discord = gui.add({ fun : () => {
-            // ga('send', 'event', 'link button', 'discord');
             window.open('https://discordapp.com/invite/CeqZDDE');
         } }, 'fun').name('Discord');
         discord.__li.className = 'cr function bigFont';
@@ -247,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         discordIcon.className = 'icon discord';
     
         let app = gui.add({ fun : () => {
-            // ga('send', 'event', 'link button', 'app');
             window.open('http://onelink.to/5b58bn');
         } }, 'fun').name('Check out mobile app');
         app.__li.className = 'cr function appBigFont';

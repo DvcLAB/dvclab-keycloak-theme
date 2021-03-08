@@ -32,10 +32,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const loginPage = document.getElementsByClassName('login-pf-page')[0];
     const canvas = document.createElement('canvas');
     allPage.insertBefore(canvas, loginPage);
-    // allPage.appendChild(canvas);
-    // canvas.style.height = '100%';
-    // canvas.style.width = '100%';
-    // canvas.style.position = 'fixed';
     resizeCanvas();
 
     let config = {

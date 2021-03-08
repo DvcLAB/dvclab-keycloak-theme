@@ -378,6 +378,7 @@ a.zocial  {
 .zocial.microsoft:before{ content: "\f15d"; }
 .zocial.stackoverflow:before{ color: inherit; }
 
+/* 微信登录logo设置 */
 #zocial-weixin:before {
     content: '';
     background: url("../img/wechat-logo-64.png");
@@ -389,6 +390,7 @@ a.zocial  {
     box-shadow: none;
 }
 
+/* GitHub登录logo设置 */
 #zocial-github:before {
     content: '';
     background: url("../img/github-logo-64.png");
@@ -399,22 +401,6 @@ a.zocial  {
     background-position: 1rem center;
     box-shadow: none;
 }
-
-/* #zocial-github:before {
-    content: '';
-} */
-/* #zocial-weixin:before {
-    font-family: 'iconfont';
-    content: "\e665";
-    color: #09BB07;
-    font-size: 2rem;
-}
-#zocial-github:before {
-    font-family: 'iconfont';
-    content: "\e690";
-    color: #231F20;
-    font-size: 2rem;
-} */
 
 @media (min-width: 768px) {
     #kc-container-wrapper {
@@ -430,6 +416,19 @@ a.zocial  {
         position: relative;
         text-align: right;
         z-index: 9999;
+    }
+    /* PC端实现logo默认灰度，悬浮时变彩色 */
+    #zocial-weixin:before {
+        filter: grayscale(100%);
+    }
+    #zocial-weixin:hover::before {
+        filter: none;
+    }
+    #zocial-github:before {
+        filter: grayscale(100%);
+    }
+    #zocial-github:hover::before {
+        filter: none;
     }
 }
 /* 手机端 */
@@ -532,6 +531,7 @@ a.zocial  {
   width: 40%;
 }
 
+/* 设置card样式 */
 .card-pf {
   /* background: #fff; */
   margin: 0 auto;
@@ -545,33 +545,34 @@ a.zocial  {
   background-color: rgba(255,255,255,0.15);
   box-shadow: inset 0 0 2rem rgb(255 255 255 / 10%);
 }
+/* 设置输入框样式 */
 .login-pf-page .form-control {
     display: block;
     width: 100%;
-    height: 3.5rem;
-    padding: 2px 6px;
-    font-size: 1.4rem;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 1.5rem;
     line-height: 1.66666667;
-    color: #363636;
-    background-color: #fff;
-    background-image: none;
-    border: none;
-    border-radius: 0.5rem;
+    border: 1px solid #fff;
+    border-radius: 0.33rem;
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 0 1rem;
 }
+/* 设置输入框悬浮样式 */
 .login-pf-page .form-control:hover {
-    /* border-color: #b62f45; */
     border-color: #ccc;
     outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,150,43,.6);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgba(247, 171, 30, 0.6);
 }
+/* 设置输入框选中样式 */
 .login-pf-page .form-control:focus {
-    /* border-color: #f36e39; */
     border-color: #eee;
     outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,150,43,.6);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.075), 0 0 8px rgba(247,171,30,.6);
 }
+
+/* 设置输入框前文本样式 */
 .form-horizontal .control-label {
     color: #fff;
     font-size: 1.3rem;
@@ -582,9 +583,9 @@ a.zocial  {
 @media (max-width: 840px) {
     .login-pf-page .card-pf{
       max-width: none;
-      margin-left: 20px;
+      /* margin-left: 20px;
       margin-right: 20px;
-      /* padding: 20px 20px 30px 20px; */
+      padding: 20px 20px 30px 20px; */
       padding: 20px;
     }
 }
@@ -592,10 +593,8 @@ a.zocial  {
     .login-pf-page .card-pf{
       max-width: none;
       /* margin-left: 0;
-      margin-right: 0; */
-      margin-left: 2rem;
-      margin-right: 2rem;
-      /* padding-top: 0; */
+      margin-right: 0;
+      padding-top: 0; */
     }
     .card-pf.login-pf-accounts{
       max-width: none;
@@ -661,17 +660,18 @@ a.zocial  {
 }
 
 .login-pf-page .btn-primary {
+    min-height: 4rem;
+    background: none;
     color: #fff;
-    height: 3.8rem;
-    background-image: linear-gradient(to bottom,#7e1641 0,#5c0d3a 100%);
-    background-repeat: repeat-x;
-    border-color: #4d0a34;
-    background-color: #7e1640;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 0;
     margin-top: 0;
-    border-radius: 0.5rem;
 }
 .login-pf-page .btn-primary:hover {
-    background-image: linear-gradient(to bottom,#921e4e 0,#74134a 100%);
+    background-color: rgba(255,255,255,0.15)!important;
 }
 
 .login-pf-page .list-view-pf .list-group-item {
@@ -685,10 +685,6 @@ a.zocial  {
 .login-pf-page .card-pf{
   margin-bottom: 10px;
   max-width: 360px;
-  /* 卡片修改：圆角+透明+内阴影 */
-  /* border-radius: 1rem;
-  background-color: rgba(255,255,255,0.15);
-  box-shadow: inset 0 0 2rem rgb(255 255 255 / 10%); */
 }
 
 #kc-form-login div.form-group:last-of-type,

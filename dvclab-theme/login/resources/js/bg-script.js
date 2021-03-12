@@ -929,7 +929,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let sunrays;
     let sunraysTemp;
     
-    let ditheringTexture = createTextureAsync('../img/LDR_LLL1_0.png');
+    // let ditheringTexture = createTextureAsync('../img/LDR_LLL1_0.png');
     
     const blurProgram            = new Program(blurVertexShader, blurShader);
     const copyProgram            = new Program(baseVertexShader, copyShader);
@@ -1310,9 +1310,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         gl.uniform1i(displayMaterial.uniforms.uTexture, dye.read.attach(0));
         if (config.BLOOM) {
             gl.uniform1i(displayMaterial.uniforms.uBloom, bloom.attach(1));
-            gl.uniform1i(displayMaterial.uniforms.uDithering, ditheringTexture.attach(2));
-            let scale = getTextureScale(ditheringTexture, width, height);
-            gl.uniform2f(displayMaterial.uniforms.ditherScale, scale.x, scale.y);
+            // gl.uniform1i(displayMaterial.uniforms.uDithering, ditheringTexture.attach(2));
+            // let scale = getTextureScale(ditheringTexture, width, height);
+            // gl.uniform2f(displayMaterial.uniforms.ditherScale, scale.x, scale.y);
         }
         if (config.SUNRAYS)
             gl.uniform1i(displayMaterial.uniforms.uSunrays, sunrays.attach(3));

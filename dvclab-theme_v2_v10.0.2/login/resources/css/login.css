@@ -1,0 +1,736 @@
+/* WebGL Fluid BG Settings */
+.login-pf body {
+    /* 注释背景 */
+    /* background: url("../img/keycloak-bg.png") no-repeat center center fixed;
+    background-size: cover; */
+    /* 紫橘色静态背景 */
+    /* height: 100%;
+    background-color: #ff9d00;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%23ff9d00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23fb8d17' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23f47d24' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23ed6e2d' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23e35f34' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23d85239' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23cc453e' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23be3941' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23b02f43' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23a02644' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23901e44' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23801843' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%236f1341' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%235e0f3d' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%234e0c38' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%233e0933' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%232e062c' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23210024' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover; */
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #000!important;
+    margin: 0;
+}
+
+canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+}
+
+.login-pf-page {
+    padding-top: 4rem;
+}
+
+.login-pf-page:after {
+    content: '©2021 DvcLAB.com';
+    display: block;
+    color: #fff;
+    text-align: center;
+}
+
+.alert-error {
+    background-color: #ffffff;
+    border-color: #cc0000;
+    color: #333333;
+}
+
+#kc-locale ul {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    list-style: none;
+    right: 0;
+    top: 20px;
+    min-width: 100px;
+    padding: 2px 0;
+    border: solid 1px #bbb;
+}
+
+#kc-locale:hover ul {
+    display: block;
+    margin: 0;
+}
+
+#kc-locale ul li a {
+    display: block;
+    padding: 5px 14px;
+    color: #000 !important;
+    text-decoration: none;
+    line-height: 20px;
+}
+
+#kc-locale ul li a:hover {
+    color: #4d5258;
+    background-color: #d4edfa;
+}
+
+#kc-locale-dropdown a {
+    /* color: #4d5258; */
+    color: #fff;
+    background: 0 0;
+    padding: 0 15px 0 0;
+    font-weight: 300;
+}
+
+#kc-locale-dropdown a:hover {
+    text-decoration: none;
+}
+
+#kc-error-message p {
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}
+
+a#kc-current-locale-link {
+    display: block;
+    padding: 0 5px;
+}
+
+/* a#kc-current-locale-link:hover {
+    background-color: rgba(0,0,0,0.2);
+} */
+
+a#kc-current-locale-link::after {
+    content: "\2c5";
+    margin-left: 4px;
+}
+
+.login-pf .container {
+    padding-top: 40px;
+}
+
+.login-pf a:hover {
+    color: #0099d3;
+}
+
+#kc-logo {
+    width: 100%;
+}
+
+#kc-logo-wrapper {
+    background-image: url(../img/keycloak-logo-2.png);
+    background-repeat: no-repeat;
+    height: 63px;
+    width: 300px;
+    margin: 62px auto 0;
+}
+
+div.kc-logo-text {
+    background-image: url(../img/keycloak-logo-text.png);
+    background-repeat: no-repeat;
+    height: 63px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+div.kc-logo-text span {
+    display: none;
+}
+
+#kc-header {
+    color: #ededed;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+#kc-header-wrapper {
+    /* 隐藏文字 */
+    color: transparent;
+    /* 添加logo */
+    background: url("../img/dvclab-logo.png");
+    background-size: 10rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* 原有代码 */
+    font-size: 29px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.2em;
+    padding: 62px 10px 20px;
+    white-space: normal;
+}
+
+#kc-content {
+    width: 100%;
+}
+/* 设置“登录”标题 */
+#kc-page-title {
+    /* content:'登录'; */
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-align: center;
+    margin-top: 0;
+}
+#kc-info {
+    display: none;
+}
+#kc-form-wrapper {
+    /* 隐藏输入用户名密码登录 */
+    display: none;
+}
+
+#kc-attempted-username{
+    font-size: 20px;
+    font-family:inherit;
+    font-weight: normal;
+    padding-right:10px;
+}
+
+#kc-username{
+    text-align: center;
+}
+
+#kc-webauthn-settings-form{
+    padding-top:8px;
+}
+
+/* #kc-content-wrapper {
+    overflow-y: hidden;
+} */
+
+#kc-info {
+    padding-bottom: 200px;
+    margin-bottom: -200px;
+}
+
+#kc-info-wrapper {
+    font-size: 13px;
+}
+
+#kc-form-options span {
+    display: block;
+}
+
+#kc-form-options .checkbox {
+    margin-top: 0;
+    color: #72767b;
+}
+
+#kc-terms-text {
+    margin-bottom: 20px;
+}
+
+#kc-registration {
+    margin-bottom: 15px;
+}
+
+/* TOTP */
+
+.subtitle {
+    text-align: right;
+    margin-top: 30px;
+    color: #909090;
+}
+
+.required {
+    color: #CB2915;
+}
+
+ol#kc-totp-settings {
+    margin: 0;
+    padding-left: 20px;
+}
+
+ul#kc-totp-supported-apps {
+  margin-bottom: 10px;
+}
+
+#kc-totp-secret-qr-code {
+    max-width:150px;
+    max-height:150px;
+}
+
+#kc-totp-secret-key {
+    background-color: #fff;
+    color: #333333;
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+/* OAuth */
+
+#kc-oauth h3 {
+    margin-top: 0;
+}
+
+#kc-oauth ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#kc-oauth ul li {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+#kc-oauth ul li:first-of-type {
+    border-top: 0;
+}
+
+#kc-oauth .kc-role {
+    display: inline-block;
+    width: 50%;
+}
+
+/* Code */
+#kc-code textarea {
+    width: 100%;
+    height: 8em;
+}
+
+/* Social */
+
+#kc-social-providers ul {
+    padding: 0;
+    margin: 0;
+}
+
+#kc-social-providers li {
+    display: block;
+}
+
+#kc-social-providers li:first-of-type {
+    margin-top: 0;
+}
+
+.kc-login-tooltip{
+    position:relative;
+    display: inline-block;
+}
+
+.kc-login-tooltip .kc-tooltip-text{
+    top:-3px;
+    left:160%;
+    background-color: black;
+    visibility: hidden;
+    color: #fff;
+
+    min-width:130px;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow:0 1px 8px rgba(0,0,0,0.6);
+    padding: 5px;
+
+    position: absolute;
+    opacity:0;
+    transition:opacity 0.5s;
+}
+
+/* Show tooltip */
+.kc-login-tooltip:hover .kc-tooltip-text {
+    visibility: visible;
+    opacity:0.7;
+}
+
+/* Arrow for tooltip */
+.kc-login-tooltip .kc-tooltip-text::after {
+    content: " ";
+    position: absolute;
+    top: 15px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.zocial,
+a.zocial  {
+    width: 100%;
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: none;
+    border: 0;
+    background: #f5f5f5;
+    color: #72767b;
+    border-radius: 0;
+    white-space: normal;
+}
+.zocial:before {
+  /* border-right: 0; */
+  margin-right: 0;
+  border: none;
+}
+.zocial span:before {
+    padding: 7px 10px;
+    font-size: 14px;
+}
+.zocial:hover {
+    background: #ededed !important;
+}
+
+.zocial.facebook,
+.zocial.github,
+.zocial.google,
+.zocial.microsoft,
+.zocial.stackoverflow,
+.zocial.linkedin,
+.zocial.twitter {
+    background-image: none;
+    border: 0;
+
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* Copy of zocial windows classes to be used for microsoft's social provider button */
+.zocial.microsoft:before{ content: "\f15d"; }
+.zocial.stackoverflow:before{ color: inherit; }
+
+/* 微信登录logo设置 */
+#social-weixin:before {
+    content: '';
+    background: url("../img/wechat-logo-64.png");
+    background-size: 3rem;
+    width: 5rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+    background-position: 1rem center;
+    box-shadow: none;
+}
+
+/* GitHub登录logo设置 */
+#social-github:before {
+    content: '';
+    background: url("../img/github-logo-64.png");
+    background-size: 3rem;
+    width: 5rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+    background-position: 1rem center;
+    box-shadow: none;
+}
+
+@media (min-width: 768px) {
+    #kc-container-wrapper {
+        position: absolute;
+        width: 100%;
+    }
+
+    .login-pf .container {
+        padding-right: 80px;
+    }
+
+    #kc-locale {
+        position: relative;
+        text-align: right;
+        z-index: 9999;
+    }
+    /* PC端实现logo默认灰度，悬浮时变彩色 */
+    #zocial-weixin:before {
+        filter: grayscale(100%);
+    }
+    #zocial-weixin:hover::before {
+        filter: none;
+    }
+    #zocial-github:before {
+        filter: grayscale(100%);
+    }
+    #zocial-github:hover::before {
+        filter: none;
+    }
+}
+/* 手机端 */
+@media (max-width: 767px) {
+
+    .login-pf body {
+      /* background: white; */
+      /* 背景颜色，设置为黑色 */
+      background-color: #000;
+    }
+
+    #kc-header {
+        padding-left: 15px;
+        padding-right: 15px;
+        float: none;
+        text-align: left;
+    }
+
+    /* #kc-header-wrapper {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 20px 60px 0 0;
+      color: #72767b;
+      letter-spacing: 0;
+    } */
+
+    div.kc-logo-text {
+        margin: 0;
+        width: 150px;
+        height: 32px;
+        background-size: 100%;
+    }
+
+    #kc-form {
+        float: none;
+    }
+
+    #kc-info-wrapper {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 15px;
+        padding-top: 15px;
+        padding-left: 0px;
+        padding-right: 15px;
+    }
+
+    #kc-social-providers li {
+        display: block;
+        /* margin-right: 5px; */
+    }
+
+    .login-pf .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    #kc-locale {
+        position: absolute;
+        width: 200px;
+        top: 20px;
+        right: 20px;
+        text-align: right;
+        z-index: 9999;
+    }
+
+    #kc-logo-wrapper {
+        background-size: 100px 21px;
+        height: 21px;
+        width: 100px;
+        margin: 20px 0 0 20px;
+    }
+
+}
+
+@media (min-height: 646px) {
+    #kc-container-wrapper {
+        bottom: 12%;
+    }
+}
+
+@media (max-height: 645px) {
+    #kc-container-wrapper {
+        padding-top: 50px;
+        top: 20%;
+    }
+}
+
+.card-pf form.form-actions .btn {
+    float: right;
+    margin-left: 10px;
+}
+
+#kc-form-buttons {
+  /* margin-top: 40px; */
+  margin-top: 3rem;
+}
+
+.login-pf-page .login-pf-brand {
+  margin-top: 20px;
+  max-width: 360px;
+  width: 40%;
+}
+
+/* 设置card样式 */
+.card-pf {
+  /* background: #fff; */
+  margin: 0 auto;
+  /* padding: 0 20px; */
+  padding: 1rem;
+  max-width: 500px;
+  border-top: 0;
+  box-shadow: 0 0 0;
+  /* 卡片修改：圆角+透明+内阴影 */
+  border-radius: 1rem;
+  background-color: rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 2rem rgb(255 255 255 / 10%);
+}
+/* 设置输入框样式 */
+.login-pf-page .form-control {
+    display: block;
+    width: 100%;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.66666667;
+    border: 1px solid #fff;
+    border-radius: 0.33rem;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 0 1rem;
+}
+/* 设置输入框悬浮样式 */
+.login-pf-page .form-control:hover {
+    border-color: #ccc;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgba(247, 171, 30, 0.6);
+}
+/* 设置输入框选中样式 */
+.login-pf-page .form-control:focus {
+    border-color: #eee;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.075), 0 0 8px rgba(247,171,30,.6);
+}
+
+/* 设置输入框前文本样式 */
+.form-horizontal .control-label {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+/*tablet*/
+@media (max-width: 840px) {
+    .login-pf-page .card-pf{
+      max-width: none;
+      /* margin-left: 20px;
+      margin-right: 20px;
+      padding: 20px 20px 30px 20px; */
+      padding: 20px;
+    }
+}
+@media (max-width: 767px) {
+    .login-pf-page .card-pf{
+      max-width: none;
+      /* margin-left: 0;
+      margin-right: 0;
+      padding-top: 0; */
+    }
+    .card-pf.login-pf-accounts{
+      max-width: none;
+    }
+}
+
+.login-pf-page .login-pf-signup {
+  font-size: 15px;
+  color: #72767b;
+}
+#kc-content-wrapper .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* PC端 */
+@media (min-width: 768px) {
+  .login-pf-page .login-pf-social-section {
+    max-width: 100%;
+  }
+  .login-pf-page .login-pf-social-section:first-of-type {
+    padding-right: 39px;
+    /* border-right: 1px solid #d1d1d1; */
+    margin-right: -1px;
+  }
+  .login-pf-page .login-pf-social-section:last-of-type {
+    /* padding-left: 40px; */
+    /* 删除左边框的线+内边距 */
+    padding: 0;
+    border: none;
+  }
+  /* .login-pf-page .login-pf-social-section .login-pf-social-link:last-of-type {
+    margin-bottom: 0;
+  } */
+  .login-pf-page #kc-social-providers a:last-of-type {
+    margin-bottom: 0;
+  }
+}
+#kc-social-providers hr{
+    display: none;
+}
+#kc-social-providers h4{
+    display: none;
+}
+/* .login-pf-page .login-pf-social {
+  margin-bottom: 2rem;
+} */
+.login-pf-page .login-pf-social a {
+  /* 设置第三方登录按钮 */
+  display: block;
+  min-height: 4rem;
+  background: none;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 0.8rem;
+  padding: 0.5rem 0;
+  /* 因使用了before伪类，占用了5rem，为了保证文字居中设置 */
+  padding-right: 4rem;
+  margin-bottom: 2rem;
+}
+.login-pf-page .login-pf-social a:hover {
+    background-color: rgba(255,255,255,0.15)!important;
+}
+
+.login-pf-page.login-pf-page-accounts {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-pf-page .btn-primary {
+    min-height: 4rem;
+    background: none;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 0;
+    margin-top: 0;
+}
+.login-pf-page .btn-primary:hover {
+    background-color: rgba(255,255,255,0.15)!important;
+}
+
+.btn-default {
+    min-height: 4rem;
+    background: none;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 0;
+    margin-top: 0;
+}
+.btn-default:hover {
+    background-color: rgba(255,255,255,0.15)!important;
+}
+
+.login-pf-page .list-view-pf .list-group-item {
+    border-bottom: 1px solid #ededed;
+}
+
+.login-pf-page .list-view-pf-description {
+    width: 100%;
+}
+
+.login-pf-page .card-pf{
+  margin-bottom: 10px;
+  max-width: 360px;
+}
+
+#kc-form-login div.form-group:last-of-type,
+#kc-register-form div.form-group:last-of-type,
+#kc-update-profile-form div.form-group:last-of-type {
+    margin-bottom: 0px;
+}
+
+#kc-back {
+    margin-top: 5px;
+}
+
+form#kc-select-back-form div.login-pf-social-section {
+    padding-left: 0px;
+    border-left: 0px;
+}

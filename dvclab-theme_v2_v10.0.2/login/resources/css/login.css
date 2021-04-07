@@ -732,6 +732,10 @@ a.zocial  {
 #kc-update-profile-form div.form-group:last-of-type {
     margin-bottom: 0px;
 }
+/* 报错信息显示 */
+.form-group span {
+    color: white;
+}
 
 #kc-back {
     margin-top: 5px;

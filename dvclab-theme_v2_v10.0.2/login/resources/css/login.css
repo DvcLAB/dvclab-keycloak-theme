@@ -398,6 +398,7 @@ a.zocial  {
     background-repeat: no-repeat;
     background-position: 1rem center;
     box-shadow: none;
+    display: inline-block;
 }
 
 /* GitHub登录logo设置 */
@@ -410,6 +411,7 @@ a.zocial  {
     background-repeat: no-repeat;
     background-position: 1rem center;
     box-shadow: none;
+    display: inline-block;
 }
 
 @media (min-width: 768px) {
@@ -428,16 +430,16 @@ a.zocial  {
         z-index: 9999;
     }
     /* PC端实现logo默认灰度，悬浮时变彩色 */
-    #zocial-weixin:before {
+    #social-weixin:before {
         filter: grayscale(100%);
     }
-    #zocial-weixin:hover::before {
+    #social-weixin:hover::before {
         filter: none;
     }
-    #zocial-github:before {
+    #social-github:before {
         filter: grayscale(100%);
     }
-    #zocial-github:hover::before {
+    #social-github:hover::before {
         filter: none;
     }
 }
@@ -654,7 +656,9 @@ a.zocial  {
 } */
 .login-pf-page .login-pf-social a {
   /* 设置第三方登录按钮 */
-  display: block;
+  /* display: block; */
+  display: flex;
+  align-items: center;
   min-height: 4rem;
   background: none;
   color: #fff;
@@ -664,12 +668,15 @@ a.zocial  {
   border: 1px solid #fff;
   border-radius: 0.8rem;
   padding: 0.5rem 0;
-  /* 因使用了before伪类，占用了5rem，为了保证文字居中设置 */
-  padding-right: 4rem;
   margin-bottom: 2rem;
 }
+
 .login-pf-page .login-pf-social a:hover {
     background-color: rgba(255,255,255,0.15)!important;
+}
+
+.login-pf-page .login-pf-social a span {
+    width: 70%;
 }
 
 .login-pf-page.login-pf-page-accounts {

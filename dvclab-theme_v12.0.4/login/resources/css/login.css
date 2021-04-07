@@ -26,6 +26,41 @@ canvas {
     color: #fff;
     text-align: center;
 }
+
+/* 设置输入框样式 */
+.login-pf-page .form-control {
+    display: block;
+    width: 100%;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.66666667;
+    border: 1px solid #fff;
+    border-radius: 0.33rem;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    padding: 0 1rem;
+}
+/* 设置输入框悬浮样式 */
+.login-pf-page .form-control:hover {
+    border-color: #ccc;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgba(247, 171, 30, 0.6);
+}
+/* 设置输入框选中样式 */
+.login-pf-page .form-control:focus {
+    border-color: #eee;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.075), 0 0 8px rgba(247,171,30,.6);
+}
+
+/* 设置输入框前文本样式 */
+.form-horizontal .control-label {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
 /*IE compatibility*/
 .pf-c-form-control {
     font-size: 14px;
@@ -151,6 +186,10 @@ canvas {
     padding:0.375rem 1rem;
     padding: var(--pf-global--spacer--form-element) var(--pf-global--spacer--md);
 }
+/* 原有按钮样式隐藏 */
+.pf-c-button:after {
+    display: none;
+}
 
 /* default - IE compatibility */
 .pf-m-primary {
@@ -204,7 +243,8 @@ canvas {
 }
 
 #kc-locale-dropdown a {
-    color: #4d5258;
+    /* color: #4d5258; */
+    color: #fff;
     background: 0 0;
     padding: 0 15px 0 0;
     font-weight: 300;
@@ -267,12 +307,29 @@ div.kc-logo-text span {
 }
 
 #kc-header-wrapper {
+    /* 隐藏文字 */
+    color: transparent;
+    /* 添加logo */
+    background: url("../img/dvclab-logo.png");
+    background-size: 7rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* 原有代码 */
     font-size: 29px;
     text-transform: uppercase;
     letter-spacing: 3px;
     line-height: 1.2em;
     padding: 62px 10px 20px;
     white-space: normal;
+}
+
+/* 设置“登录”标题 */
+#kc-page-title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-align: center;
+    margin-top: 0;
 }
 
 #kc-content {
@@ -301,10 +358,14 @@ div.kc-logo-text span {
 
 #kc-form-wrapper {
     margin-top: 10px;
+    /* 隐藏登录输入 */
+    display: none;
 }
 
 #kc-info {
     margin: 20px -40px -30px;
+    /* 隐藏注册 */
+    display: none;
 }
 
 #kc-info-wrapper {
@@ -415,10 +476,50 @@ ul#kc-totp-supported-apps {
 }
 
 .kc-social-item {
-    margin-bottom: 0.5rem; /* default - IE compatibility */
+    /* margin-bottom: 0.5rem;
     margin-bottom: var(--pf-global--spacer--sm);
     font-size: 15px;
+    text-align: center; */
+    /* 设置第三方登录按钮 */
+    display: block;
+    min-height: 4rem;
+    background: none;
+    color: #fff;
+    font-size: 1.5rem;
     text-align: center;
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 0;
+    /* 因使用了before伪类，占用了5rem，为了保证文字居中设置 */
+    padding-right: 4rem;
+}
+.kc-social-item:hover {
+    background-color: rgba(255,255,255,0.15)!important;
+}
+
+/* 微信登录logo设置 */
+#social-weixin:before {
+    content: '';
+    background: url("../img/wechat-logo-64.png");
+    background-size: 3rem;
+    width: 5rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+    background-position: 1rem center;
+    box-shadow: none;
+}
+
+/* GitHub登录logo设置 */
+#social-github:before {
+    content: '';
+    background: url("../img/github-logo-64.png");
+    background-size: 3rem;
+    width: 5rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+    background-position: 1rem center;
+    box-shadow: none;
 }
 
 .kc-social-provider-name {
@@ -452,9 +553,14 @@ ul#kc-totp-supported-apps {
 }
 
 .kc-social-section hr{
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    /* 隐藏横杠 */
+    display: none;
 }
-
+.kc-social-section h4 {
+    /* 隐藏文字 */
+    display: none;
+}
 .kc-login-tooltip .kc-tooltip-text{
     top:-3px;
     left:160%;
@@ -506,12 +612,27 @@ ul#kc-totp-supported-apps {
         text-align: right;
         z-index: 9999;
     }
+    /* PC端实现logo默认灰度，悬浮时变彩色 */
+    #social-weixin:before {
+        filter: grayscale(100%);
+    }
+    #social-weixin:hover::before {
+        filter: none;
+    }
+    #social-github:before {
+        filter: grayscale(100%);
+    }
+    #social-github:hover::before {
+        filter: none;
+    }
 }
 
 @media (max-width: 767px) {
 
     .login-pf body {
-        background: white;
+        /* background: white; */
+        /* 背景颜色，设置为黑色 */
+        background-color: #000;
     }
 
     #kc-header {
@@ -521,13 +642,13 @@ ul#kc-totp-supported-apps {
         text-align: left;
     }
 
-    #kc-header-wrapper {
+    /* #kc-header-wrapper {
         font-size: 16px;
         font-weight: bold;
         padding: 20px 60px 0 0;
         color: #72767b;
         letter-spacing: 0;
-    }
+    } */
 
     div.kc-logo-text {
         margin: 0;
@@ -662,24 +783,34 @@ ul#kc-totp-supported-apps {
 }
 
 .card-pf {
-    margin: 0 auto;
+    /* margin: 0 auto;
     box-shadow: var(--pf-global--BoxShadow--lg);
     padding: 0 20px;
     max-width: 500px;
     border-top: 4px solid;
-    border-color: #0066CC; /* default - IE compatibility */
-    border-color: var(--pf-global--primary-color--100);
+    border-color: #0066CC;
+    border-color: var(--pf-global--primary-color--100); */
+    /* 修改card样式 */
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 500px;
+    border-top: 0;
+    box-shadow: 0 0 0;
+    /* 卡片修改：圆角+透明+内阴影 */
+    border-radius: 1rem;
+    background-color: rgba(255,255,255,0.15);
+    box-shadow: inset 0 0 2rem rgb(255 255 255 / 10%);
 }
 
 /*phone*/
 @media (max-width: 767px) {
     .login-pf-page .card-pf {
         max-width: none;
-        margin-left: 0;
+        /* margin-left: 0;
         margin-right: 0;
         padding-top: 0;
         border-top: 0;
-        box-shadow: 0 0;
+        box-shadow: 0 0; */
     }
 
     .kc-social-grid {
@@ -708,6 +839,34 @@ ul#kc-totp-supported-apps {
 
 .login-pf-page .btn-primary {
     margin-top: 0;
+    /* 添加新内容 */
+    min-height: 4rem;
+    background: none;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 0;
+}
+
+.login-pf-page .btn-primary:hover {
+    background-color: rgba(255,255,255,0.15)!important;
+}
+
+.btn-default {
+    min-height: 4rem;
+    background: none;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 0;
+    margin-top: 0;
+}
+.btn-default:hover {
+    background-color: rgba(255,255,255,0.15)!important;
 }
 
 .login-pf-page .list-view-pf .list-group-item {

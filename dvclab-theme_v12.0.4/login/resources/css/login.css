@@ -391,7 +391,10 @@ div.kc-logo-text span {
 #kc-registration {
     margin-bottom: 0;
 }
-
+/* 错误提示文字 */
+.instruction {
+    color: #fff;
+}
 /* TOTP */
 
 .subtitle {

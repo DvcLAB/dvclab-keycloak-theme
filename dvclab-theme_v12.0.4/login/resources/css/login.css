@@ -256,7 +256,8 @@ canvas {
 }
 
 a#kc-current-locale-link {
-    display: block;
+    /*display: block;*/
+    display: none;
     padding: 0 5px;
 }
 
@@ -622,13 +623,13 @@ ul#kc-totp-supported-apps {
     }
     /* PC端实现logo默认灰度，悬浮时变彩色 */
     #social-weixin:before {
-        filter: grayscale(100%);
+        /* filter: grayscale(100%);*/
     }
     #social-weixin:hover::before {
         filter: none;
     }
     #social-github:before {
-        filter: grayscale(100%);
+        /* filter: grayscale(100%);*/
     }
     #social-github:hover::before {
         filter: none;

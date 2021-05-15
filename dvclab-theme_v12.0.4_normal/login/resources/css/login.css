@@ -320,6 +320,8 @@ div.kc-logo-text span {
     background-size: 7rem;
     background-repeat: no-repeat;
     background-position: center;
+    /* logo外发光效果 */
+    filter: drop-shadow(0 0 1rem rgba(255, 252, 224, 0.15));
     /* 原有代码 */
     font-size: 29px;
     text-transform: uppercase;
